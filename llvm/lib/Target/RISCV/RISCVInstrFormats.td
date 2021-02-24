@@ -135,10 +135,6 @@ def OPC_NMSUB     : RISCVOpcode<0b1001011>;
 def OPC_NMADD     : RISCVOpcode<0b1001111>;
 def OPC_OP_FP     : RISCVOpcode<0b1010011>;
 def OPC_OP_V      : RISCVOpcode<0b1010111>;
-// fix me: need a better name
-def OPC_OP_K_1110011      : RISCVOpcode<0b1110011>; // pollentropy & getnoise （64&32）
-def OPC_OP_K_0010011      : RISCVOpcode<0b0010011>; // sm3, sha256（64&32）; sha512, aes64ks1i, aes64im (64)
-def OPC_OP_K_0110011     : RISCVOpcode<0b0110011>; // sm4 (64&32); sha512, aes32 (32); ase64 (64)
 def OPC_BRANCH    : RISCVOpcode<0b1100011>;
 def OPC_JALR      : RISCVOpcode<0b1100111>;
 def OPC_JAL       : RISCVOpcode<0b1101111>;
