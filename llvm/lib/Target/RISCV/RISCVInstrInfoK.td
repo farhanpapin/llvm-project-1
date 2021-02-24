@@ -24,3 +24,15 @@
 // }
 //===--------------------------example of P Ext------------------------------------===//
 
+//===----------------------------------------------------------------------===//
+// Instruction class templates
+//===----------------------------------------------------------------------===//
+
+let hasSideEffects = 0, mayLoad = 0, mayStore = 0 in 
+class RVKUnary<bits<3> funct3, string opcodestr>
+    : RVInstI<funct3, OPC_OP_IMM, (outs GPR: $rd), (ins GPR: $rs1), opcodestr, "$rd, $rs1">;
+
+let Predicates = [HasStdExtK] in {
+    def SHA256SUM0 :    RVKUnary<0b001, "sha256sum0">, 
+                        Sched<[]>;
+}
