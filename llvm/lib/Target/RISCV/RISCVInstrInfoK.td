@@ -6,8 +6,8 @@
 //
 //===----------------------------------------------------------------------===//
 ///
-/// This file describes the RISC-K instructions from the standard 'K' SIMD
-/// extension
+/// This file describes the RISC-K instructions from the standard 'K' 
+/// scalar cryptography extension, version 0.8.1. 
 ///
 //===----------------------------------------------------------------------===//
 
@@ -23,3 +23,4 @@
 //   def RADD16 : ALU_P_rr<0b0000000, 0b000, "radd16">;
 // }
 //===--------------------------example of P Ext------------------------------------===//
+
