@@ -11,26 +11,13 @@
 ///
 //===----------------------------------------------------------------------===//
 
-//===--------------------------example of P Ext------------------------------------===//
-//      please remove this block after implement first instruction
-//
-// let hasSideEffects = 0, mayLoad = 0, mayStore = 0 in
-// class ALU_P_rr<bits<7> funct7, bits<3> funct3, string opcodestr>
-//     : RVInstR<funct7, funct3, OPC_OP_P, (outs GPR:$rd), (ins GPR:$rs1, GPR:$rs2),
-//               opcodestr, "$rd, $rs1, $rs2">;
-
-// let Predicates = [HasStdExtP] in {
-//   def RADD16 : ALU_P_rr<0b0000000, 0b000, "radd16">;
-// }
-//===--------------------------example of P Ext------------------------------------===//
-
 //===----------------------------------------------------------------------===//
 // Instruction class templates
 //===----------------------------------------------------------------------===//
 
 let hasSideEffects = 0, mayLoad = 0, mayStore = 0 in 
 class RVKUnary<bits<7> funct7, bits<5> funct5, bits<3> funct3, string opcodestr>
-    : RVInstR<funct7, funct3, OPC_OP_IMM, (outs GPR: $rd), (ins GPR: $rs1), opcodestr, "$rd, $rs1">{
+    : RVInstR<funct7, funct3, OPC_OP_IMM, (outs GPR:$rd), (ins GPR:$rs1), opcodestr, "$rd, $rs1">{
         let Inst{24-20} = funct5;
     }
 
