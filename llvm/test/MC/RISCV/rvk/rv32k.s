@@ -34,3 +34,39 @@ sha256sig1 a0, a1
 # CHECK-ENCODING: [0x13,0x95,0x35,0x10]
 # CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
 # CHECK-UNKNOWN: 13 95 35 10 <unknown>
+
+sha512sum0r a0, a1, a2
+# CHECK-INST: sha512sum0r a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x50]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 50 <unknown>
+
+sha512sum1r a0, a1, a2
+# CHECK-INST: sha512sum1r a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x52]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 52 <unknown>
+
+sha512sum0l a0, a1, a2
+# CHECK-INST: sha512sum0l a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x54]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 54 <unknown>
+
+sha512sum0h a0, a1, a2
+# CHECK-INST: sha512sum0h a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x5c]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 5c <unknown>
+
+sha512sum1l a0, a1, a2
+# CHECK-INST: sha512sum1l a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x56]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 56 <unknown>
+
+sha512sum1h a0, a1, a2
+# CHECK-INST: sha512sum1h a0, a1, a2
+# CHECK-ENCODING: [0x33,0x85,0xc5,0x5e]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 85 c5 5e <unknown>
