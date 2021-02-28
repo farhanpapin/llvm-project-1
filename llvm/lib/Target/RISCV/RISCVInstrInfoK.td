@@ -26,6 +26,13 @@ class RVKBinary<bits<7> funct7, bits<3> funct3, string opcodestr>
     : RVInstR<funct7, funct3, OPC_OP, (outs GPR:$rd), (ins GPR:$rs1, GPR:$rs2), opcodestr, "$rd, $rs1, $rs2">;
 
 let Predicates = [HasStdExtK] in {
+    def GETNOISE   :   InstAlias<"getnoise $rd", (CSRRS GPR:$rd, MNOISE.Encoding, X0)>, 
+                        Sched<[]>;
+    def POLLENTROPY:   InstAlias<"pollentropy $rd", (CSRRS GPR:$rd, MENTROPY.Encoding, X0)>, 
+                        Sched<[]>;
+}
+
+let Predicates = [HasStdExtK] in {
     def SHA256SUM0 :    RVKUnary<0b0001000, 0b00000, 0b001, "sha256sum0">, 
                         Sched<[]>;
     def SHA256SUM1 :    RVKUnary<0b0001000, 0b00001, 0b001, "sha256sum1">, 
