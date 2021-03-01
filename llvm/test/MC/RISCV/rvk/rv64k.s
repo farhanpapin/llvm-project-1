@@ -11,18 +11,6 @@
 # RUN: llvm-mc -triple=riscv64 -filetype=obj --mattr=+experimental-k %s \
 # RUN:      | llvm-objdump -d - | FileCheck %s --check-prefix=CHECK-UNKNOWN
 
-getnoise a0
-# CHECK-INST: csrr a0, mnoise 
-# CHECK-ENCODING: [0x73,0x25,0x90,0x7a]
-# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
-# CHECK-UNKNOWN: 73 25 90 7a csrr a0, mnoise
-
-pollentropy a0
-# CHECK-INST: csrr a0, mentropy
-# CHECK-ENCODING: [0x73,0x25,0x50,0xf1]
-# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
-# CHECK-UNKNOWN: 73 25 50 f1 csrr a0, mentropy
-
 sha256sum0 a0, a1
 # CHECK-INST: sha256sum0 a0, a1
 # CHECK-ENCODING: [0x13,0x95,0x05,0x10]

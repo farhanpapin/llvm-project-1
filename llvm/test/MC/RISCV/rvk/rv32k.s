@@ -35,6 +35,33 @@ sha256sig1 a0, a1
 # CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
 # CHECK-UNKNOWN: 13 95 35 10 <unknown>
 
+sm3p0 a0, a1
+# CHECK-INST: sm3p0 a0, a1
+# CHECK-ENCODING: [0x13,0x95,0x85,0x10]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 13 95 85 10 <unknown>
+
+sm3p1 a0, a1
+# CHECK-INST: sm3p1 a0, a1
+# CHECK-ENCODING: [0x13,0x95,0x95,0x10]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 13 95 95 10 <unknown>
+
+getnoise a0
+# CHECK-INST: csrr a0, mnoise 
+# CHECK-ENCODING: [0x73,0x25,0x90,0x7a]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 73 25 90 7a
+
+pollentropy a0
+# CHECK-INST: csrr a0, mentropy
+# CHECK-ENCODING: [0x73,0x25,0x50,0xf1]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 73 25 50 f1
+
+
+# RV32 only
+
 sha512sum0r a0, a1, a2
 # CHECK-INST: sha512sum0r a0, a1, a2
 # CHECK-ENCODING: [0x33,0x85,0xc5,0x50]
