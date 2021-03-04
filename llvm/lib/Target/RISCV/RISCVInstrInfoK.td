@@ -11,28 +11,15 @@
 ///
 //===----------------------------------------------------------------------===//
 
+//===----------------------------------------------------------------------===//
+// Operand and SDNode transformation definitions.
+//===----------------------------------------------------------------------===//
 def uimm2 : Operand<XLenVT>, ImmLeaf<XLenVT, [{return isUInt<2>(Imm);}]> {
   let ParserMatchClass = UImmAsmOperand<2>;
   let DecoderMethod = "decodeUImmOperand<2>";
   let OperandType = "OPERAND_UIMM2";
   let OperandNamespace = "RISCVOp";
 }
-
-//===----------------------------------------------------------------------===//
-// Operand and SDNode transformation definitions.
-//===----------------------------------------------------------------------===//
-
-// def rcon : Operand<XLenVT>, ImmLeaf<XLenVT, [{return isInt<4>(Imm);}]> {
-//   let ParserMatchClass = SImmAsmOperand<4>;
-//   let EncoderMethod = "getRcon";
-//   let DecoderMethod = "decodeUImmOperand<4>";
-//   let OperandType = "OPERAND_UIMM4";
-//   let OperandNamespace = "RISCVOp";
-// }
-
-//===----------------------------------------------------------------------===//
-// Operand and SDNode transformation definitions.
-//===----------------------------------------------------------------------===//
 
 def rcon : Operand<XLenVT>, ImmLeaf<XLenVT, [{return isUInt<4>(Imm);}]> {
   let ParserMatchClass = UImmAsmOperand<4>;
