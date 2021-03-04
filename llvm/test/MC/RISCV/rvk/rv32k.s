@@ -83,4 +83,38 @@ pollentropy a0
 # CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
 # CHECK-UNKNOWN: 73 25 50 f1 csrr a0, mentropy
 
+sm4ed t0, a2, 3
+# CHECK-INST: sm4ed t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xf0]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 f0 <unknown>
 
+sm4ks t0, a2, 3
+# CHECK-INST: sm4ks t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xf4]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 f4 <unknown>
+
+aes32esmi t0, a2, 3
+# CHECK-INST: aes32esmi t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xf6]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 f6 <unknown>
+
+aes32esi t0, a2, 3
+# CHECK-INST: aes32esi t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xf2]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 f2 <unknown>
+
+aes32dsmi t0, a2, 3
+# CHECK-INST: aes32dsmi t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xfe]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 fe <unknown>
+
+aes32dsi t0, a2, 3
+# CHECK-INST: aes32dsi t0, a2, 3
+# CHECK-ENCODING: [0x33,0x80,0xc2,0xfa]
+# CHECK-ERROR: instruction requires the following: 'K' (Scalar Cryptography Instructions)
+# CHECK-UNKNOWN: 33 80 c2 fa <unknown>

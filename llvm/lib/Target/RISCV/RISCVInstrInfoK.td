@@ -11,6 +11,13 @@
 ///
 //===----------------------------------------------------------------------===//
 
+def uimm2 : Operand<XLenVT>, ImmLeaf<XLenVT, [{return isUInt<2>(Imm);}]> {
+  let ParserMatchClass = UImmAsmOperand<2>;
+  let DecoderMethod = "decodeUImmOperand<2>";
+  let OperandType = "OPERAND_UIMM2";
+  let OperandNamespace = "RISCVOp";
+}
+
 //===----------------------------------------------------------------------===//
 // Instruction class templates
 //===----------------------------------------------------------------------===//
@@ -26,6 +33,19 @@ let hasSideEffects = 0, mayLoad = 0, mayStore = 0 in {
     class RVKBinary<bits<7> funct7, bits<3> funct3, string opcodestr>
         : RVInstR<funct7, funct3, OPC_OP, (outs GPR:$rd), (ins GPR:$rs1, GPR:$rs2),
                 opcodestr, "$rd, $rs1, $rs2">;
+
+    // op rt rs2 bs
+    class RVKByteSelect<bits<5> funct5, string opcodestr>
+        : RVInstS<0b000, OPC_OP, (outs GPR:$rt), (ins GPR:$rs2, uimm2:$bs), 
+                opcodestr, "$rt, $rs2, $bs">{
+            bits<2> bs;
+            bits<5> rt;
+
+            let Inst{31-30}=bs;
+            let Inst{29-25}=funct5;
+            let Inst{19-15}=rt;
+            let Inst{11-7}=0b00000;
+        }
 } // hasSideEffects = 0, mayLoad = 0, mayStore = 0
 
 let Predicates = [HasStdExtK] in {
@@ -37,6 +57,20 @@ let Predicates = [HasStdExtK] in {
     def SHA256SIG0 :    RVKUnary<0b0001000, 0b00010, 0b001, "sha256sig0">, 
                         Sched<[]>;
     def SHA256SIG1 :    RVKUnary<0b0001000, 0b00011, 0b001, "sha256sig1">, 
+                        Sched<[]>;
+    
+    //RVKByteSelect
+    def SM4ED      :    RVKByteSelect<0b11000, "sm4ed">,
+                        Sched<[]>;
+    def SM4KS      :    RVKByteSelect<0b11010, "sm4ks">,
+                        Sched<[]>;
+    def AES32ESMI  :    RVKByteSelect<0b11011, "aes32esmi">,
+                        Sched<[]>;
+    def AES32ESI  :     RVKByteSelect<0b11001, "aes32esi">,
+                        Sched<[]>;
+    def AES32DSMI  :    RVKByteSelect<0b11111, "aes32dsmi">,
+                        Sched<[]>;
+    def AES32DSI  :     RVKByteSelect<0b11101, "aes32dsi">,
                         Sched<[]>;
 
     // Pseudo Instructions
