@@ -9,6 +9,16 @@ For more information on how to contribute to the LLVM project, please
 take a look at the
 [Contributing to LLVM](https://llvm.org/docs/Contributing.html) guide.
 
+## Testing RISC-V K Extension Branch
+This branch is currently implementing supports for scalar cryptography 
+extension for LLVM according to the version 0.9 of 
+[specification](https://github.com/riscv/riscv-crypto). Currently, we
+are implementing the MC (Machine Code) layer of this extension and the
+majority of work is done under `llvm/lib/Target/RISCV` directory. There
+are also some test files in `llvm/test/MC/RISCV/rvk` directory whose 
+automated check could be ran by command `make check-llvm-mc-riscv-rvk`
+in the `llvm/build` directory after building the LLVM project. 
+
 ## Getting Started with the LLVM System
 
 Taken from https://llvm.org/docs/GettingStarted.html.
